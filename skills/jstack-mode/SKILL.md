@@ -62,9 +62,9 @@ Read [PRINCIPLES.md](../../PRINCIPLES.md) first, then the leaf skill for any pri
 
 ## Subagents
 
-**Use `subagent_type: "jstack-agent"` for any subagent you spawn inside a playbook step.** `/jstack-mode` and `jstack-agent` route through the same wrapper. Routed skills (`state`, `because`, `drafts`, `challenge`) set their own types when they say so. Do not override those.
+**Use the role agent for any subagent you spawn inside a playbook step.** Sweep uses `subagent_type: "jstack-sweep"`. Briefs, Write, and Capture use `subagent_type: "jstack-prose"`. Decide uses `subagent_type: "jstack-judgment"`. Challenge and Drafts use `subagent_type: "jstack-panel-<number>"` for each panel member. If `/setup-jstack` has never run, every spawn uses the shipped `jstack-agent` instead.
 
-**Defaults for every `Task` call.** File pointers not inlined context, explicit model per role (configurable via `/setup-jstack`). Sweep work uses the sweep model. Briefs, Write, and Capture use the judgment-and-prose model. Decide and Challenge use the judgment model, and Challenge may fan out a panel. A role line of `inherit` runs that role on the parent chat model (omit Task `model`).
+**Defaults for every subagent call.** File pointers not inlined context. Use the role agent for each role. Sweep work uses `jstack-sweep`. Briefs, Write, and Capture use `jstack-prose`. Decide uses `jstack-judgment`. Challenge may fan out `jstack-panel-<number>` members. If `/setup-jstack` has never run, every spawn uses the shipped `jstack-agent`, which uses `inherit` and the parent chat model.
 
 You own every subagent's work. Review the live artifacts and write your own summary. Do not pass through what it said.
 

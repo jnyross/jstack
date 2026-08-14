@@ -89,6 +89,19 @@ def check_skill_metadata(path, text, errors):
         errors.append(f"{path.relative_to(ROOT)}: frontmatter description is empty")
 
 
+def check_agent_metadata(path, text, errors):
+    if path.parent != ROOT / "agents" or path.suffix != ".md":
+        return
+    values = frontmatter(text)
+    expected_name = path.stem
+    if values.get("name") != expected_name:
+        errors.append(
+            f"{path.relative_to(ROOT)}: frontmatter name must be {expected_name}"
+        )
+    if not values.get("description", "").strip():
+        errors.append(f"{path.relative_to(ROOT)}: frontmatter description is empty")
+
+
 def check_forbidden(path, text, errors):
     for character, name in FORBIDDEN.items():
         if character in text:
@@ -114,6 +127,7 @@ def main():
         text = read_text(path)
         check_links(path, text, errors)
         check_skill_metadata(path, text, errors)
+        check_agent_metadata(path, text, errors)
         check_forbidden(path, text, errors)
     check_routed_skills(errors)
     if errors:

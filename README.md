@@ -34,7 +34,7 @@ Then:
 3. Command Palette: **Developer: Reload Window**.
 4. Check Customize / Settings → Plugins for **jstack**. Type `/jstack-mode` in chat. It should appear as a skill.
 
-Optional: `/setup-jstack` writes `~/.cursor/rules/jstack-models.mdc`. Until you run it, every role inherits the parent chat model.
+Optional: `/setup-jstack` writes role agent files under `~/.cursor/agents/`. Until you run it, every role uses the shipped `jstack-agent` and inherits the parent chat model.
 
 ## Requirements
 
@@ -86,7 +86,7 @@ Archive / Action / Skip is the inbox rule. Archive files it. Action is a real ne
 |---|---|
 | [`/jstack-mode`](./skills/jstack-mode/SKILL.md) | Default entry. Any loop that needs rigor. |
 | [`/jstack-stale`](./skills/jstack-stale/SKILL.md) | Compare compiled open loops to live mail and calendar. Propose kills. |
-| [`/setup-jstack`](./skills/setup-jstack/SKILL.md) | Sweep vs judgment vs challenge-panel models. |
+| [`/setup-jstack`](./skills/setup-jstack/SKILL.md) | Write role agent files for sweep, judgment, and challenge-panel models. |
 | [`/live`](./skills/live/SKILL.md) | A fact might have changed since ingest. |
 | [`/state`](./skills/state/SKILL.md) | Catch-up or meeting prep. |
 | [`/because`](./skills/because/SKILL.md) | Why did we decide this. Scattered history. |
@@ -119,7 +119,7 @@ This is a skill pack. It is not a product yet.
 - No coding playbooks. Hard stop to `/poteto-mode`.
 - No character bots. Domain knowledge lives on Johnopedia pages, not in named personas.
 - Seven playbooks, not twenty-two. Quality over coverage.
-- Model setup defaults to `inherit`. Cheap sweep vs expensive judgment only happens after `/setup-jstack`.
+- Model setup defaults to `inherit` in role agent files under `~/.cursor/agents/`. Cheap sweep vs expensive judgment only happens after `/setup-jstack`.
 - WhatsApp is not bundled. Use the existing WhatsApp skill if the thread lives there.
 - If Gmail, Calendar, or Johnopedia is disconnected, the matching playbook says the source was skipped. It will not invent live state.
 - Automations like pstack's benny are out of scope. If the stale pass cannot shrink the open list against live mail and calendar, do not add more surface.
