@@ -1,6 +1,7 @@
 ---
 name: setup-jstack
 description: Configure which models jstack uses per role. Detects available models and writes an always-applied rule that overrides the skill defaults. Use for /setup-jstack, "configure jstack models", or changing sweep vs judgment vs challenge panel.
+disable-model-invocation: true
 ---
 
 # Setup jstack
