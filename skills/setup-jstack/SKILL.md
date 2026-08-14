@@ -1,50 +1,67 @@
 ---
 name: setup-jstack
-description: Configure which models jstack uses per role. Detects available models and writes an always-applied rule that overrides the skill defaults. Use for /setup-jstack, "configure jstack models", or changing sweep vs judgment vs challenge panel.
+description: Configure which models jstack uses per role. Detects available models and writes role agents under ~/.cursor/agents. Use for /setup-jstack, "configure jstack models", or changing sweep vs judgment vs challenge panel.
 disable-model-invocation: true
 ---
 
 # Setup jstack
 
-Write `~/.cursor/rules/jstack-models.mdc`, an always-applied rule that sets jstack's model per role. The skills read it and fall back to their inline defaults when a line is absent.
+Write one role agent per configured model under `~/.cursor/agents/`. The role agents are `jstack-sweep`, `jstack-prose`, `jstack-judgment`, and one `jstack-panel-<number>` file per challenge panel member. If no role agent files exist, every role falls back to the shipped `jstack-agent`, which uses `inherit` and the parent chat model.
 
 ## Steps
 
 ### 1. Detect available models
 
-Enumerate the model slugs you can pass to a `Task` subagent in this session. If you cannot detect any, ask the user to paste the slugs they have access to. Never write a real slug you have not confirmed is available. The alias `inherit` is always valid.
+Enumerate the model IDs you can pass to a subagent in this session. If you cannot detect any, ask the user to paste the IDs they have access to. Never write a real ID you have not confirmed is available. The alias `inherit` is always valid.
 
 ### 2. Load current state
 
-If `~/.cursor/rules/jstack-models.mdc` already exists, read it and treat its values as the current choices. Otherwise start from the defaults in step 5.
+Read the `model:` line from any existing `~/.cursor/agents/jstack-*.md` role files. Treat those values as the current choices. Use `inherit` for missing `jstack-sweep`, `jstack-prose`, and `jstack-judgment` files. Use three `inherit` entries for a missing panel.
 
 ### 3. Map and confirm
 
-Show every role with its current model. Ask whether to accept as-is or change specific roles. Offer the detected models plus `inherit`. Prefer AskQuestion over free text. The `challenge panel` value is a comma-separated list. One subagent runs per entry, alias entries included, so the list length sets the count.
+Show every role with its current model. Ask whether to accept the choices or change specific roles. Offer the detected model IDs plus `inherit`. Prefer AskQuestion over free text. The challenge panel is a comma-separated list. One panel file is written per entry, so the list length sets the fan-out.
+
+The fixed role mapping is:
+
+- `sweep` writes `jstack-sweep`.
+- `judgment-and-prose` writes `jstack-prose`.
+- `judgment` writes `jstack-judgment`.
+- Panel entry `k` writes `jstack-panel-k`.
 
 ### 4. Validate
 
-Every real slug written must be in the detected set. `inherit` always passes. If a chosen real slug is not available, stop and ask again.
+Every real ID written must be in the detected set. `inherit` always passes. If a chosen real ID is not available, stop and ask again.
 
-### 5. Write the rule
+### 5. Write the role agents
 
-Write `~/.cursor/rules/jstack-models.mdc` with `alwaysApply: true` and one line per role. Overwrite the whole file so re-runs stay idempotent. Shape:
+Write each selected role agent under `~/.cursor/agents/`. Set `name` to the agent name, use a one-line description that names its jstack role, and set `model` to the selected ID or `inherit`. Do not set `is_background` or `readonly`.
 
 ```
 ---
-description: jstack per-role model choices (overrides skill defaults)
-alwaysApply: true
+name: jstack-sweep
+description: Jstack sweep role.
+model: inherit
 ---
-# jstack model configuration. One line per role. Delete a line to fall back to the skill default.
-# `inherit` as a value: the role runs on the parent chat model (omit Task `model`). Alias entries in a panel list still count toward its fan-out.
-sweep: inherit
-judgment-and-prose: inherit
-judgment: inherit
-challenge panel: inherit, inherit, inherit
+# Jstack subagent
+
+You are operating as jstack-mode's full agent style. Read the `jstack-mode` skill's `SKILL.md` in full before doing any work, including its inline Principles index. Navigate to a leaf `principle-*` skill whenever you apply that principle.
+
+If the work is a diff, a test, a PR, or a runtime repro, stop. Say to use `/poteto-mode`. Do not grow a coding path here.
 ```
 
-PoC default is `inherit` on every role so the plugin runs on whatever model is already in the chat. Replace `sweep` with a fast model when you want cheap inbox fan-out. Replace `judgment` and `challenge panel` with a scarce judgment model when Decide is worth it.
+Use the same body and matching frontmatter for `jstack-prose`, `jstack-judgment`, and each `jstack-panel-<number>` file. Change only the `name`, the one-line role description, and the selected `model`.
 
-### 6. Confirm
+The fresh-run defaults write `jstack-sweep`, `jstack-prose`, `jstack-judgment`, `jstack-panel-1`, `jstack-panel-2`, and `jstack-panel-3`, all with `model: inherit`.
 
-Tell the user the rule was written and that it applies to new sessions. Re-running this skill updates it.
+### 6. Handle stale panel files
+
+If the new panel is smaller, propose deleting `jstack-panel-*` files above the new count. Wait for approval before deleting them. Re-runs must not leave old panel files that keep adding members to the fan-out.
+
+### 7. Migrate the old rules file
+
+If `~/.cursor/rules/jstack-models.mdc` exists, say that it no longer drives anything. Offer to delete it and wait for approval. Do not delete it silently.
+
+### 8. Confirm
+
+Tell the user which role agent files were written under `~/.cursor/agents/`, which panel files were proposed for deletion, and whether the old rules file was found.
