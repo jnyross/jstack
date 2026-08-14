@@ -1,6 +1,6 @@
 ---
 name: principle-prove-it-on-the-artifact
-description: "Apply when about to say done. Read the sent draft, the live event, or get_page. Do not trust the agent's summary of what it did."
+description: "Apply when about to say done. Read the sent mail, the live event, or get_page. Do not trust the agent's summary of what it did."
 disable-model-invocation: true
 ---
 
