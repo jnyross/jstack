@@ -12,7 +12,7 @@ Write `~/.cursor/rules/jstack-models.mdc`, an always-applied rule that sets jsta
 
 ### 1. Detect available models
 
-Enumerate the model slugs you can pass to a `Task` subagent in this session. If you cannot detect any, ask the user to paste the slugs they have access to. Never write a real slug you have not confirmed is available. The aliases `inherit-parent` and `auto` are always valid.
+Enumerate the model slugs you can pass to a `Task` subagent in this session. If you cannot detect any, ask the user to paste the slugs they have access to. Never write a real slug you have not confirmed is available. The alias `inherit` is always valid.
 
 ### 2. Load current state
 
@@ -20,11 +20,11 @@ If `~/.cursor/rules/jstack-models.mdc` already exists, read it and treat its val
 
 ### 3. Map and confirm
 
-Show every role with its current model. Ask whether to accept as-is or change specific roles. Offer the detected models plus `inherit-parent` and `auto`. Prefer AskQuestion over free text. The `challenge panel` value is a comma-separated list. One subagent runs per entry, alias entries included, so the list length sets the count.
+Show every role with its current model. Ask whether to accept as-is or change specific roles. Offer the detected models plus `inherit`. Prefer AskQuestion over free text. The `challenge panel` value is a comma-separated list. One subagent runs per entry, alias entries included, so the list length sets the count.
 
 ### 4. Validate
 
-Every real slug written must be in the detected set. `inherit-parent` and `auto` always pass. If a chosen real slug is not available, stop and ask again.
+Every real slug written must be in the detected set. `inherit` always passes. If a chosen real slug is not available, stop and ask again.
 
 ### 5. Write the rule
 
@@ -36,14 +36,14 @@ description: jstack per-role model choices (overrides skill defaults)
 alwaysApply: true
 ---
 # jstack model configuration. One line per role. Delete a line to fall back to the skill default.
-# `inherit-parent` or `auto` as a value: the role runs on the parent chat model (omit Task `model`). Alias entries in a panel list still count toward its fan-out.
-sweep: inherit-parent
-judgment-and-prose: inherit-parent
-judgment: inherit-parent
-challenge panel: inherit-parent, inherit-parent, inherit-parent
+# `inherit` as a value: the role runs on the parent chat model (omit Task `model`). Alias entries in a panel list still count toward its fan-out.
+sweep: inherit
+judgment-and-prose: inherit
+judgment: inherit
+challenge panel: inherit, inherit, inherit
 ```
 
-PoC default is `inherit-parent` on every role so the plugin runs on whatever model is already in the chat. Replace `sweep` with a fast model when you want cheap inbox fan-out. Replace `judgment` and `challenge panel` with a scarce judgment model when Decide is worth it.
+PoC default is `inherit` on every role so the plugin runs on whatever model is already in the chat. Replace `sweep` with a fast model when you want cheap inbox fan-out. Replace `judgment` and `challenge panel` with a scarce judgment model when Decide is worth it.
 
 ### 6. Confirm
 
