@@ -19,7 +19,7 @@ If `~/.cursor/rules/jstack-models.mdc` already exists, read it and treat its val
 
 ### 3. Map and confirm
 
-Show every role with its current model. Ask whether to accept as-is or change specific roles. Offer the detected models plus `inherit-parent` and `auto`. Prefer AskQuestion over free text. The `challenge panel` value is a list. One subagent runs per entry, so the list length sets the count.
+Show every role with its current model. Ask whether to accept as-is or change specific roles. Offer the detected models plus `inherit-parent` and `auto`. Prefer AskQuestion over free text. The `challenge panel` value is a comma-separated list. One subagent runs per entry, alias entries included, so the list length sets the count.
 
 ### 4. Validate
 
@@ -35,16 +35,14 @@ description: jstack per-role model choices (overrides skill defaults)
 alwaysApply: true
 ---
 # jstack model configuration. One line per role. Delete a line to fall back to the skill default.
-# `inherit-parent` or `auto` as a value: the role runs on the parent chat model (omit Task `model`).
+# `inherit-parent` or `auto` as a value: the role runs on the parent chat model (omit Task `model`). Alias entries in a panel list still count toward its fan-out.
 sweep: inherit-parent
-brief: inherit-parent
-judgment and prose: inherit-parent
-hardest judgment: inherit-parent
-challenge panel: inherit-parent
-stale pass: inherit-parent
+judgment-and-prose: inherit-parent
+judgment: inherit-parent
+challenge panel: inherit-parent, inherit-parent, inherit-parent
 ```
 
-PoC default is `inherit-parent` on every role so the plugin runs on whatever model is already in the chat. Replace `sweep` and `stale pass` with a fast model when you want cheap inbox fan-out. Replace `hardest judgment` and `challenge panel` with a scarce judgment model when Decide is worth it.
+PoC default is `inherit-parent` on every role so the plugin runs on whatever model is already in the chat. Replace `sweep` with a fast model when you want cheap inbox fan-out. Replace `judgment` and `challenge panel` with a scarce judgment model when Decide is worth it.
 
 ### 6. Confirm
 
