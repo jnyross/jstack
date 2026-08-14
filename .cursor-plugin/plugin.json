@@ -1,0 +1,28 @@
+{
+	"name": "jstack",
+	"displayName": "jstack",
+	"version": "0.1.0",
+	"description": "Close knowledge-work loops against live Gmail, Calendar, and compiled Johnopedia pages. Hard handoff to pstack for any diff, test, or PR.",
+	"author": {
+		"name": "John Ross"
+	},
+	"license": "MIT",
+	"keywords": [
+		"jstack",
+		"jstack-mode",
+		"triage",
+		"gmail",
+		"calendar",
+		"johnopedia",
+		"unslop"
+	],
+	"category": "productivity",
+	"tags": [
+		"workflow",
+		"inbox",
+		"calendar",
+		"memory"
+	],
+	"skills": "./skills/",
+	"agents": "./agents/"
+}
