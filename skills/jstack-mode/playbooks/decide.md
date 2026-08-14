@@ -6,7 +6,7 @@ Two real options remain. A one-way door. Taste or risk, not a lookup. Done is a 
 
 1. State the decision question and what would falsify each option.
 2. Gather evidence with Research or Brief. Do not decide from chat vibes. Cite live vs memory.
-3. For high stakes, run **challenge** (multi-model) on the memo. Fable is scarce. Use it here, never on Triage.
+3. For high stakes, run **challenge** (multi-model) on the memo. The judgment model is scarce. Use it here, never on Triage.
 4. Write the decision to Johnopedia with `put_page`. Include rejected options on the same page. `get_page` after write. Present irreversible next steps and wait for approval before send, book, or pay.
 
 A lookup ("what time is the flight") is not Decide. Route it to Brief or Research.
