@@ -34,6 +34,8 @@ Then:
 3. Command Palette: **Developer: Reload Window**.
 4. Check Customize / Settings → Plugins for **jstack**. Type `/jstack-mode` in chat. It should appear as a skill.
 
+Optional: `/setup-jstack` writes `~/.cursor/rules/jstack-models.mdc`. Until you run it, every role inherits the parent chat model.
+
 ## Requirements
 
 - Johnopedia: `user-Johnopedia`
@@ -41,8 +43,6 @@ Then:
 - Google Calendar: `plugin-google-calendar-google-calendar`
 
 This plugin does not install or declare these MCP servers. The IDs are install-specific, so a differently named server will not be found. If a server is missing, jstack skips that source and says so.
-
-Optional: `/setup-jstack` writes `~/.cursor/rules/jstack-models.mdc`. Until you run it, every role inherits the parent chat model.
 
 ## First command
 
