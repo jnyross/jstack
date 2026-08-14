@@ -12,4 +12,4 @@ Drafts proceed. The world waits.
 
 **Pattern:** Show the exact outbound text, booking, or payment. Name which facts came from GBrain and which were live-checked. Wait for explicit approval. `create_draft` is allowed. `send_message`, sending `reply`, `create_event` / `respond_to_event` that change a real invite, pay, and sharing private facts are not.
 
-**Does not change:** Reversible page edits, research, labeling, and drafts. Those still follow never-block-on-the-human. "Don't stop" / "going to bed" still does not authorize send, book, or pay.
+**Does not change:** Reversible page edits, research, labeling, and drafts proceed without asking. "Don't stop" / "going to bed" still does not authorize send, book, or pay.

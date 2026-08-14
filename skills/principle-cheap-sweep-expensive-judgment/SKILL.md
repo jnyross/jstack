@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 Triage and source sweeps are cheap. Decide and Challenge are expensive. Do not invert that.
 
-**Why:** Inbox classification does not earn a scarce judgment model. A one-way door might. Spending Fable on Triage trains the plugin to be decoration.
+**Why:** Inbox classification does not earn a scarce judgment model. A one-way door might. Spending the judgment model on Triage trains the plugin to be decoration.
 
 **Pattern:** Fan-out Gmail slices, calendar windows, and GBrain searches on the sweep model from `/setup-jstack`. Briefs, Write, and Capture use judgment-and-prose. Decide and Challenge use the judgment model. Challenge may run a panel. Never run Challenge on Triage.
 

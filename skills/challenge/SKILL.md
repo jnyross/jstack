@@ -6,12 +6,12 @@ disable-model-invocation: true
 
 # Challenge
 
-Several models try to break the memo. Fable is scarce. Spend it here, never on Triage.
+Several models try to break the memo. The judgment model is scarce. Spend it here, never on Triage.
 
 ## Steps
 
 1. Freeze the artifact. A decision memo or the exact outbound text. Do not challenge a moving draft.
-2. Run the challenge panel from `/setup-jstack`. Split the `challenge panel` line on commas; one reviewer per entry. Each reviewer gets the same artifact, the decision question or send context, and instructions to find what would falsify the pick or make the letter a mistake. Always `subagent_type: "jstack-agent"`; put each panel entry on Task `model` (omit `model` for `inherit-parent` or `auto`).
+2. Run the challenge panel from `/setup-jstack` (default 3 reviewers). Split the `challenge panel` line on commas; one reviewer per entry. Each reviewer gets the same artifact, the decision question or send context, and instructions to find what would falsify the pick or make the letter a mistake. Always `subagent_type: "jstack-agent"`; put each panel entry on Task `model` (omit `model` for `inherit-parent` or `auto`).
 3. Keep surviving objections. Drop nits. Agreement across models is high-signal. One unique catch still counts if it is checkable.
 4. Hand surviving objections back to Decide or Write. Do not silently patch the letter and send.
 

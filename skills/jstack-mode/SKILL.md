@@ -15,7 +15,7 @@ If the work is a diff, a test, a PR, or a runtime repro, stop. Say to use `/pote
 
 ## Non-negotiables
 
-**Start every multi-step task with a todolist whose first item is to read the Principles section below in full.** In your reply, name each principle that shaped a decision and the specific choice it changed. A citation with no decision behind it means you skipped its leaf skill.
+**Start every multi-step task with a todolist. Read the Principles section below in full first.** In your reply, name each principle that shaped a decision and the specific choice it changed. A citation with no decision behind it means you skipped its leaf skill.
 
 Remaining triggers:
 
@@ -52,9 +52,9 @@ Read [PRINCIPLES.md](../../PRINCIPLES.md) first, then the leaf skill for any pri
 
 ## Autonomy
 
-**Just do it** for reversible work. Research, drafts, `create_draft`, reversible `put_page` edits, labeling, and live reads proceed without asking.
+**Just do it** for reversible work. Research, drafts, `create_draft`, reversible `put_page` edits that do not retire, close, or drop a thread, labeling, and live reads proceed without asking.
 
-**Always pause** for send, book, pay, share private facts, `send_message`, `reply` that actually sends, `create_event` / `update_event` / `delete_event` / `respond_to_event` that change a real invite, `trash_thread` on anything that is not obvious spam, and any irreversible Johnopedia delete.
+**Always pause** for send, book, pay, share private facts, `send_message`, `reply` that actually sends, `create_event` / `update_event` / `delete_event` / `respond_to_event` that change a real invite, `trash_thread` on anything that is not obvious spam, any `put_page` that retires, closes, or drops a thread, and any irreversible Johnopedia delete.
 
 **Session overrides:** "Don't stop" / "going to bed" / "run until done" do **not** authorize send, book, or pay. jstack does not spend while you sleep.
 
@@ -88,7 +88,7 @@ Call the connector that owns the artifact. Do not query Linear during household 
 **Required when the playbook needs them**
 
 - **Johnopedia** (`user-Johnopedia`). `query`, `search`, `get_page`, `list_pages`, `put_page`, `get_recent_salience`, `recall`, `get_timeline`, `add_timeline_entry`, `extract_facts`. Compiled truth, capture, kill-the-thread. `get_page` after every `put_page`.
-- **Gmail** (`plugin-gmail-gmail`). `search_threads`, `get_thread`, `get_message`, `create_draft`, `update_draft`, `list_drafts`, `list_labels`, `label_thread`. `send_message` and `reply` wait for approval.
+- **Gmail** (`plugin-gmail-gmail`). `search_threads`, `get_thread`, `get_message`, `create_draft`, `update_draft`, `list_drafts`, `list_labels`, `label_thread`, `trash_thread`. `send_message` and `reply` wait for approval.
 - **Google Calendar** (`plugin-google-calendar-google-calendar`). `list_calendars`, `list_events`, `search_events`, `get_event`, `suggest_time`. `create_event`, `update_event`, `delete_event`, `respond_to_event` wait for approval when they change a real invite.
 
 **Optional, when the artifact lives there**
@@ -104,7 +104,7 @@ If Johnopedia is down, say so, keep going on live mail and calendar, and do not 
 
 ## Playbooks
 
-Your first todolist actions are the matched playbook's steps, copied in verbatim, before any task-specific todos and before you reason about the task. A step you choose not to do stays in the list with a one-line `skip: <reason>`. Skipping silently is not allowed. Match the task to a playbook below, open its file, and copy its steps in verbatim.
+Read the Principles section first. Then your first todolist actions are the matched playbook's steps, copied in verbatim, before any task-specific todos and before you reason about the task. A step you choose not to do stays in the list with a one-line `skip: <reason>`. Skipping silently is not allowed. Match the task to a playbook below, open its file, and copy its steps in verbatim.
 
 There is no eighth miscellaneous playbook. Unmatched work either is coding (`/poteto-mode`) or gets a one-off plan under Close or Research.
 
