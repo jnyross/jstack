@@ -9,6 +9,6 @@ Inbox, calendar, WhatsApp, or Linear has piled up. The user wants a docket, not 
 3. If GBrain still lists a thread the live source shows done, kill it in compiled truth in the same pass. Run the **jstack-stale** skill. Propose the page edit. Do not silently delete. `get_page` after `put_page`.
 4. Hand Action items to Close, Write, or Decide. Do not grow a parking lot.
 
-Use `subagent_type: "jstack-sweep"` for the fan-out. If `/setup-jstack` has never run, use `subagent_type: "jstack-agent"`. Skip Linear and WhatsApp unless the pile is actually there. Skip an unavailable MCP and say so.
+Use `subagent_type: "jstack-sweep"` for the fan-out. Skip Linear and WhatsApp unless the pile is actually there. Skip an unavailable MCP and say so.
 
 **Reply:** the docket. One line per item, tagged Archive / Action / Skip, with a live citation (gmail thread id or event id). List compiled-truth kills separately, each with the slug and the live proof. One next move for the first Action item. If the stale pass could not shrink the open list, say that in one line.

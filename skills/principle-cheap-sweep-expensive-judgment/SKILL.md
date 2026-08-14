@@ -10,6 +10,6 @@ Triage and source sweeps are cheap. Decide and Challenge are expensive. Do not i
 
 **Why:** Inbox classification does not earn a scarce judgment model. A one-way door might. Spending the judgment model on Triage trains the plugin to be decoration.
 
-**Pattern:** Fan-out Gmail slices, calendar windows, and GBrain searches with `subagent_type: "jstack-sweep"`. Briefs, Write, and Capture use `subagent_type: "jstack-prose"`. Decide uses `subagent_type: "jstack-judgment"`. Challenge may run `subagent_type: "jstack-panel-<number>"` members. If `/setup-jstack` has never run, use `subagent_type: "jstack-agent"` for each role. Never run Challenge on Triage.
+**Pattern:** Fan-out Gmail slices, calendar windows, and GBrain searches on `jstack-sweep`. Briefs, Write, and Capture use `jstack-prose`. Decide uses `jstack-judgment`. Challenge may spend the panel agents. Never run Challenge on Triage.
 
 **Does not change:** The playbook steps. A cheap model still copies them verbatim.

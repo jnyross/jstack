@@ -11,7 +11,7 @@ Rebuild working context, then stop. Analog of pstack `/recall`, aimed at people 
 ## Steps
 
 1. Lock scope. Topic, window, which calendars or inboxes. State it back. Default window is the next 48 hours for meeting prep, last 7 days for catch-up.
-2. Fan out with `subagent_type: "jstack-sweep"`. GBrain `query`, `get_page`, `get_recent_salience`, `recall`. Live Calendar `list_events`. Live Gmail `search_threads`. Linear only if the topic is work. If `/setup-jstack` has never run, use `subagent_type: "jstack-agent"`.
+2. Fan out with `subagent_type: "jstack-sweep"`. GBrain `query`, `get_page`, `get_recent_salience`, `recall`. Live Calendar `list_events`. Live Gmail `search_threads`. Linear only if the topic is work.
 3. Verify time-sensitive facts with the **live** skill. RSVP state, "did they reply", and "is this still on" never come from a page alone.
 4. Write the brief to the contract below. Cut adjacent threads unless they block this one.
 

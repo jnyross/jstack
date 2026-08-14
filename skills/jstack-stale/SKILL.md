@@ -20,7 +20,7 @@ If this pass cannot shrink the open list, say so. The rest of the plugin is deco
    - **Unknown.** No live handle. Do not invent a kill.
 4. Propose compiled-truth edits. Show the slug, the live id, and the exact page change. Wait for approval before `put_page` that retires a thread. After approval, `put_page` then `get_page`.
 
-Use `subagent_type: "jstack-sweep"`. If `/setup-jstack` has never run, use `subagent_type: "jstack-agent"`. Never Challenge. Never send mail from this skill.
+Use `subagent_type: "jstack-sweep"`. Never Challenge. Never send mail from this skill.
 
 ## Reply
 
