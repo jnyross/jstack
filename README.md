@@ -12,7 +12,7 @@ Two steps. Open the folder so the skills load in this workspace. Then install it
 
 ### 1. Open the folder
 
-**File > Open Folder** on `/Users/johnross/Projects/jstack`.
+**File > Open Folder** on `/path/to/jstack`.
 
 Project skills live at `.cursor/skills/` (a symlink to `skills/`). Opening this folder is enough to type `/jstack-mode` in a chat in this workspace. That is the create-skill project-skill path.
 
@@ -22,7 +22,7 @@ This is a Cursor Plugin (`.cursor-plugin/plugin.json`), not a marketplace listin
 
 ```bash
 mkdir -p ~/.cursor/plugins/local
-ln -s /Users/johnross/Projects/jstack ~/.cursor/plugins/local/jstack
+ln -s /path/to/jstack ~/.cursor/plugins/local/jstack
 ```
 
 The manifest must resolve at `~/.cursor/plugins/local/jstack/.cursor-plugin/plugin.json`. Nested extra folders will not load.
@@ -33,6 +33,14 @@ Then:
 2. In Cursor Settings, turn on **Include third-party Plugins, Skills, and other configs** if that toggle exists.
 3. Command Palette: **Developer: Reload Window**.
 4. Check Customize / Settings → Plugins for **jstack**. Type `/jstack-mode` in chat. It should appear as a skill.
+
+## Requirements
+
+- Johnopedia: `user-Johnopedia`
+- Gmail: `plugin-gmail-gmail`
+- Google Calendar: `plugin-google-calendar-google-calendar`
+
+This plugin does not install or declare these MCP servers. The IDs are install-specific, so a differently named server will not be found. If a server is missing, jstack skips that source and says so.
 
 Optional: `/setup-jstack` writes `~/.cursor/rules/jstack-models.mdc`. Until you run it, every role inherits the parent chat model.
 
@@ -111,7 +119,7 @@ This is a skill pack. It is not a product yet.
 - No coding playbooks. Hard stop to `/poteto-mode`.
 - No character bots. Domain knowledge lives on Johnopedia pages, not in named personas.
 - Seven playbooks, not twenty-two. Quality over coverage.
-- Model setup defaults to `inherit-parent`. Cheap sweep vs expensive judgment only happens after `/setup-jstack`.
+- Model setup defaults to `inherit`. Cheap sweep vs expensive judgment only happens after `/setup-jstack`.
 - WhatsApp is not bundled. Use the existing WhatsApp skill if the thread lives there.
 - If Gmail, Calendar, or Johnopedia is disconnected, the matching playbook says the source was skipped. It will not invent live state.
 - Automations like pstack's benny are out of scope. If the stale pass cannot shrink the open list against live mail and calendar, do not add more surface.
